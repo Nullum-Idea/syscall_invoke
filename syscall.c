@@ -1,4 +1,4 @@
-
+#include <asm/unistd_64.h>
 #if defined(__linux__) || defined(__APPLE__)
 
 /* this code will be compiled on linux and macos.
@@ -37,7 +37,7 @@ pid_t getpid_syscall(void)
 		: "=a"(res)
 		/* TODO: replace 0x0000 below with the syscall number
 		 *       or a symbolic constant. */
-		: "0"(SYSCALL_MASK | 0x0000)
+		: "0"(SYSCALL_MASK | __NR_getpid)
 		: "rcx", "r11"
 #elif defined(__ARM_ARCH_6__)
 		// found on Raspberry Pi 32bit Raspberry OS compatibility mode
